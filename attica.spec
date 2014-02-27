@@ -1,6 +1,6 @@
-%define major	1.0
-%define libname %mklibname attica %{major}
-%define devname %mklibname attica -d
+%define major	4
+%define libname %mklibname KF5Attica %{major}
+%define devname %mklibname KF5Attica -d
 
 Summary:	Open Collaboration Service providers library
 Name:		attica5
@@ -49,11 +49,17 @@ based on %{name}.
 %install
 %makeinstall_std -C build
 
+# qmake bits are installed into the wrong location...
+mkdir -p %{buildroot}%{_libdir}/qt5
+mv %{buildroot}%{_prefix}/mkspecs %{buildroot}%{_libdir}/qt5
+
 %files -n %{libname}
-%{_libdir}/libattica.so.%{major}*
+%{_libdir}/libKF5Attica.so.%{major}*
 
 %files -n %{devname}
-%{_includedir}/attica
-%{_libdir}/libattica.so
-%{_libdir}/pkgconfig/libattica.pc
-%{_libdir}/cmake/LibAttica
+%{_includedir}/attica_version.h
+%{_includedir}/Attica
+%{_libdir}/libKF5Attica.so
+%{_libdir}/pkgconfig/libKF5Attica.pc
+%{_libdir}/cmake/KF5Attica
+%{_libdir}/qt5/mkspecs/modules/*.pri
