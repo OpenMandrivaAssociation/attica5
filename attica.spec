@@ -1,18 +1,18 @@
-%define major	4
+%define major	5
 %define libname %mklibname KF5Attica %{major}
 %define devname %mklibname KF5Attica -d
 
 Summary:	Open Collaboration Service providers library
 Name:		attica5
-Version:	4.96.0
+Version:	4.97.0
 Release:	1
 License:	GPLv2+
 Group:		System/Base
 Url:		http://www.kde.org/
-Source0:	http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/4.95.0/attica-%{version}.tar.xz
+Source0:	http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/%{version}/attica-%{version}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	qt5-devel
-BuildRequires:	extra-cmake-modules5 >= 0.0.10
+BuildRequires:	extra-cmake-modules5 >= 0.0.11
 
 %description
 A library to access Open Collaboration Service providers 
@@ -54,7 +54,8 @@ mkdir -p %{buildroot}%{_libdir}/qt5
 mv %{buildroot}%{_prefix}/mkspecs %{buildroot}%{_libdir}/qt5
 
 %files -n %{libname}
-%{_libdir}/libKF5Attica.so.%{major}*
+%{_libdir}/libKF5Attica.so.%{version}
+%{_libdir}/libKF5Attica.so.%{major}
 
 %files -n %{devname}
 %{_includedir}/attica_version.h
