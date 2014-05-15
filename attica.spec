@@ -4,7 +4,7 @@
 
 Summary:	Open Collaboration Service providers library
 Name:		attica5
-Version:	4.98.0
+Version:	4.99.0
 Release:	1
 License:	GPLv2+
 Group:		System/Base
@@ -12,7 +12,7 @@ Url:		http://www.kde.org/
 Source0:	http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/%{version}/attica-%{version}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	qt5-devel
-BuildRequires:	extra-cmake-modules5 >= 0.0.11
+BuildRequires:	extra-cmake-modules5 >= 0.0.13
 
 %description
 A library to access Open Collaboration Service providers 
@@ -58,8 +58,9 @@ mv %{buildroot}%{_prefix}/mkspecs %{buildroot}%{_libdir}/qt5
 %{_libdir}/libKF5Attica.so.%{major}
 
 %files -n %{devname}
-%{_includedir}/attica_version.h
-%{_includedir}/Attica
+%dir %{_includedir}/KF5
+%{_includedir}/KF5/attica_version.h
+%{_includedir}/KF5/Attica
 %{_libdir}/libKF5Attica.so
 %{_libdir}/pkgconfig/libKF5Attica.pc
 %{_libdir}/cmake/KF5Attica
