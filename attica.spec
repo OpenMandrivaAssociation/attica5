@@ -4,7 +4,7 @@
 
 Summary:	Open Collaboration Service providers library
 Name:		attica5
-Version:	4.99.0
+Version:	4.100.0
 Release:	1
 License:	GPLv2+
 Group:		System/Base
