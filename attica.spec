@@ -13,6 +13,7 @@ Source0:	http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/%{version}/attica
 BuildRequires:	cmake
 BuildRequires:	qt5-devel
 BuildRequires:	extra-cmake-modules5 >= 1.0.0
+BuildRequires:	pkgconfig(egl)
 
 %description
 A library to access Open Collaboration Service providers 
