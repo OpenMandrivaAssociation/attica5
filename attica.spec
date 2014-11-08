@@ -1,18 +1,19 @@
 %define major	5
 %define libname %mklibname KF5Attica %{major}
 %define devname %mklibname KF5Attica -d
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Summary:	Open Collaboration Service providers library
 Name:		attica5
-Version:	5.3.0
+Version:	5.4.0
 Release:	1
 License:	GPLv2+
 Group:		System/Base
 Url:		http://www.kde.org/
-Source0:	http://ftp5.gwdg.de/pub/linux/kde/unstable/frameworks/%{version}/attica-%{version}.tar.xz
+Source0:	http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/attica-%{version}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	qt5-devel
-BuildRequires:	extra-cmake-modules5 >= 1.0.0
+BuildRequires:	extra-cmake-modules5 >= %(echo %{version} |sed -e 's,^5,1,')
 BuildRequires:	pkgconfig(egl)
 
 %description
