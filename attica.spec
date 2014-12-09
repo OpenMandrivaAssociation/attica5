@@ -6,12 +6,13 @@
 Summary:	Open Collaboration Service providers library
 Name:		attica5
 Version:	5.4.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		System/Base
 Url:		http://www.kde.org/
 Source0:	http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/attica-%{version}.tar.xz
 BuildRequires:	cmake
+BuildRequires:	ninja
 BuildRequires:	qt5-devel
 BuildRequires:	extra-cmake-modules5 >= %(echo %{version} |sed -e 's,^5,1,')
 BuildRequires:	pkgconfig(egl)
@@ -45,15 +46,12 @@ based on %{name}.
 %setup -q -n attica-%{version}
 
 %build
-%cmake
-%make
+%cmake -G Ninja \
+	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+ninja
 
 %install
-%makeinstall_std -C build
-
-# qmake bits are installed into the wrong location...
-mkdir -p %{buildroot}%{_libdir}/qt5
-mv %{buildroot}%{_prefix}/mkspecs %{buildroot}%{_libdir}/qt5
+DESTDIR="%{buildroot}" ninja -C build install
 
 %files -n %{libname}
 %{_libdir}/libKF5Attica.so.%{version}
