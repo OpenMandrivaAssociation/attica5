@@ -13,7 +13,9 @@ Url:		http://www.kde.org/
 Source0:	http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/attica-%{version}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	ninja
-BuildRequires:	qt5-devel
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	extra-cmake-modules5 >= %(echo %{version} |sed -e 's,^5,1,')
 BuildRequires:	pkgconfig(egl)
 
