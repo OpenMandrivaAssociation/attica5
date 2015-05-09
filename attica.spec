@@ -5,18 +5,16 @@
 
 Summary:	Open Collaboration Service providers library
 Name:		attica5
-Version:	5.9.0
+Version:	5.10.0
 Release:	1
 License:	GPLv2+
 Group:		System/Base
 Url:		http://www.kde.org/
 Source0:	http://ftp5.gwdg.de/pub/linux/kde/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/attica-%{version}.tar.xz
-BuildRequires:	cmake
-BuildRequires:	ninja
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Test)
-BuildRequires:	extra-cmake-modules5 >= %(echo %{version} |sed -e 's,^5,1,')
+BuildRequires:	cmake(ECM)
 BuildRequires:	pkgconfig(egl)
 
 %description
@@ -46,14 +44,13 @@ based on %{name}.
 
 %prep
 %setup -q -n attica-%{version}
+%cmake_kde5
 
 %build
-%cmake -G Ninja \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
-ninja
+%ninja -C build
 
 %install
-DESTDIR="%{buildroot}" ninja -C build install
+%ninja_install -C build
 
 %files -n %{libname}
 %{_libdir}/libKF5Attica.so.%{version}
