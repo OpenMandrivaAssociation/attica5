@@ -14,6 +14,7 @@ Source0:	http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d.
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Test)
+BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	cmake(ECM)
 BuildRequires:	pkgconfig(egl)
 
