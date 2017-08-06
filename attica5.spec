@@ -5,7 +5,7 @@
 
 Summary:	Open Collaboration Service providers library
 Name:		attica5
-Version:	5.36.0
+Version:	5.37.0
 Release:	1
 License:	GPLv2+
 Group:		System/Base
@@ -54,6 +54,7 @@ based on %{name}.
 %ninja_install -C build
 
 %files -n %{libname}
+%{_sysconfdir}/xdg/attica.categories
 %{_libdir}/libKF5Attica.so.%{version}
 %{_libdir}/libKF5Attica.so.%{major}
 
